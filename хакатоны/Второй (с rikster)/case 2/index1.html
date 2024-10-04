@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Предстоящие спортивные матчи</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #header {
+            text-align: right;
+            padding: 10px;
+        }
+
+        #calendar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .day {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .day.selected {
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+        #matches {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .match {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h2>Имя пользователя</h2>
+    </div>
+
+    <div id="calendar">
+        <div class="day" id="day1">2023-11-15</div>
+        <div class="day selected" id="day2">2023-11-16</div>
+        <div class="day" id="day3">2023-11-17</div>
+    </div>
+
+    <div id="matches">
+        <!-- Матчи для 2023-11-15 -->
+        <div class="match" data-date="2023-11-15">
+            <h3>Матч 1 (2023-11-15)</h3>
+            <p>Дата и время: 2023-11-15 14:00</p>
+            <p>Спорт: Футбол</p>
+            <p>Место: Стадион A</p>
+        </div>
+        <div class="match" data-date="2023-11-15">
+            <h3>Матч 2 (2023-11-15)</h3>
+            <p>Дата и время: 2023-11-15 16:30</p>
+            <p>Спорт: Теннис</p>
+            <p>Место: Корт B</p>
+        </div>
+
+        <!-- Матчи для 2023-11-16 -->
+        <div class="match" data-date="2023-11-16">
+            <h3>Матч 3 (2023-11-16)</h3>
+            <p>Дата и время: 2023-11-16 18:00</p>
+            <p>Спорт: Баскетбол</p>
+            <p>Место: Зал C</p>
+        </div>
+        <div class="match" data-date="2023-11-16">
+            <h3>Матч 4 (2023-11-16)</h3>
+            <p>Дата и время: 2023-11-16 19:30</p>
+            <p>Спорт: Волейбол</p>
+            <p>Место: Зал D</p>
+        </div>
+        <div class="match" data-date="2023-11-16">
+            <h3>Матч 5 (2023-11-16)</h3>
+            <p>Дата и время: 2023-11-16 21:00</p>
+            <p>Спорт: Хоккей</p>
+            <p>Место: Арена X</p>
+        </div>
+        <div class "match" data-date="2023-11-16">
+            <h3>Матч 6 (2023-11-16)</h3>
+            <p>Дата и время: 2023-11-16 22:30</p>
+            <p>Спорт: Гольф</p>
+            <p>Место: Поле Y</p>
+        </div>
+        <!-- Другие матчи для 2023-11-16 -->
+        <div class "match" data-date="2023-11-16">
+            <h3>Матч 7 (2023-11-16)</h3>
+            <p>Дата и время: 2023-11-16 23:30</p>
+            <p>Спорт: Бейсбол</p>
+            <p>Место: Парк Z</p>
+        </div>
+        <div class "match" data-date="2023-11-16">
+            <h3>Матч 8 (2023-11-16)</h3>
+            <p>Дата и время: 2023-11-16 10:30</p>
+            <p>Спорт: Плавание</p>
+            <p>Место: Бассейн X</p>
+        </div>
+        <!-- Матчи для 2023-11-17 -->
+        <div class="match" data-date="2023-11-17">
+            <h3>Матч 9 (2023-11-17)</h3>
+            <p>Дата и время: 2023-11-17 14:00</p>
+            <p>Спорт: Теннис</p>
+            <p>Место: Корт A</p>
+        </div>
+        <div class="match" data-date="2023-11-17">
+            <h3>Матч 10 (2023-11-17)</h3>
+            <p>Дата и время: 2023-11-17 16:30</p>
+            <p>Спорт: Футбол</p>
+            <p>Место: Стадион B</p>
+        </div>
+        <!-- Другие матчи для 2023-11-17 -->
+    </div>
+
+    <script>
+        const days = document.querySelectorAll('.day');
+        const matches = document.querySelectorAll('.match');
+
+        days.forEach((day) => {
+            day.addEventListener('click', () => {
+                // Очищаем все дни от класса 'selected'
+                days.forEach((d) => d.classList.remove('selected'));
+                // Выделяем выбранный день
+                day.classList.add('selected');
+                const selectedDate = day.innerText;
+                // Показываем матчи для выбранной даты
+                showMatches(selectedDate);
+            });
+        });
+
+        function showMatches(selectedDate) {
+            matches.forEach((match) => {
+                const matchDate = match.getAttribute('data-date');
+                if (matchDate === selectedDate) {
+                    match.style.display = 'block';
+                } else {
+                    match.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

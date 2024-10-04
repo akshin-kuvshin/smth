@@ -1,0 +1,49 @@
+{
+  "fullname": "Пушкунов Айдыс Александрович",
+  "gender": "male",
+  "birthdate": "2003-04-07",
+  "residence": "Томск",
+  "age": "21",
+  "citizenship": "РФ",
+  "email": "asdasdasd@asd.asd",
+  "phone": "+712312341212",
+  "jobtitle": [
+    "Frontend developer"
+  ],
+  "money": [
+    "3000000"
+  ],
+  "education": [
+    "ТГУ"
+  ],
+  "edu_start_date": [
+    "2024-09-01"
+  ],
+  "edu_end_date": [
+    "2028-05-25"
+  ],
+  "high_edu_level": [
+    "bachelor"
+  ],
+  "orgName": [
+    "Министерство здравоохранения Республики Алтай"
+  ],
+  "post": [
+    "Системный администратор"
+  ],
+  "workStartDate": [
+    "2023-09-01"
+  ],
+  "workEndDate": [
+    "2024-04-30"
+  ],
+  "workDescription": [
+    "работал"
+  ],
+  "experience": [
+    "1"
+  ],
+  "skills": [
+    "навыки работы"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "fullname": "Засимук Даниил Витальевич",
+  "gender": "male",
+  "birthdate": "2005-02-25",
+  "residence": "ул. Букетова 65, кв. 213",
+  "age": "19",
+  "citizenship": "Казахстан",
+  "email": "zasimukd@mail.ru",
+  "phone": "+77711074076",
+  "jobtitle": [
+    "Разработчик в сфере ИИ"
+  ],
+  "money": [
+    "1000000"
+  ],
+  "education": [
+    "МФТИ"
+  ],
+  "edu_start_date": [
+    "2023-09-01"
+  ],
+  "edu_end_date": [
+    "2027-06-01"
+  ],
+  "high_edu_level": [
+    "bachelor"
+  ],
+  "orgName": [
+    "\"Микрон\""
+  ],
+  "post": [
+    "Разработчик ИИ (искуственного интеллекта)"
+  ],
+  "workStartDate": [
+    "2021-06-01"
+  ],
+  "workEndDate": [
+    "2021-08-31"
+  ],
+  "workDescription": [
+    "Написание нейронных сетей для computer vision."
+  ],
+  "experience": [
+    "1"
+  ],
+  "skills": [
+    "Умение работать с нейронными сетями."
+  ]
+}

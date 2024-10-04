@@ -1,0 +1,49 @@
+{
+  "fullname": "Аксёнов Данила Александрович",
+  "gender": "male",
+  "birthdate": "2006-08-25",
+  "residence": "ул. Жукова 36, кв. 2",
+  "age": "18",
+  "citizenship": "Казахстан",
+  "email": "aksenovdanila.main@gmail.com",
+  "phone": "+77076104780",
+  "jobtitle": [
+    "Техник-программист"
+  ],
+  "money": [
+    "500000"
+  ],
+  "education": [
+    "Первый IT-лицей"
+  ],
+  "edu_start_date": [
+    "2013-09-01"
+  ],
+  "edu_end_date": [
+    "2022-05-25"
+  ],
+  "high_edu_level": [
+    "secondary"
+  ],
+  "orgName": [
+    "Фонд \"Умыт Жарагы\""
+  ],
+  "post": [
+    "Волонтёр"
+  ],
+  "workStartDate": [
+    "2021-08-20"
+  ],
+  "workEndDate": [
+    "2021-08-22"
+  ],
+  "workDescription": [
+    "Собирал деньги на лечение больных детей."
+  ],
+  "experience": [
+    "1"
+  ],
+  "skills": [
+    "Soft-skills"
+  ]
+}
