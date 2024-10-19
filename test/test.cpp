@@ -1,37 +1,71 @@
 #include <iostream>
+#include <vector>
+#include <set>
 #include <algorithm>
 using namespace std;
 
-const int MAX_SIZE = (int)1e3 + 5;
+class Solution {
+private:
+    vector<pair<int, int>> twoSum(vector<int>& nums, int x, int except) {
+        vector<pair<int, int>> answer;
+        int l = 0,
+            r = (int)nums.size() - 1;
+        while (l < r) {
+            if (l == except) {
+                ++l;
+                continue;
+            }
+            if (r == except) {
+                --r;
+                continue;
+            }
+            if (nums[l] + nums[r] == x) {
+                answer.push_back(make_pair(nums[l], nums[r]));
+                ++l; --r;
+                continue;
+            }
+            if (nums[l] + nums[r] < x)
+                ++l;
+            else
+                --r;
+        }
+        cout << "were finding for x=" << x << ", get:\n";
+        for (auto p : answer)
+            cout << '{' << p.first << ", " << p.second << "}\n";
+        return answer;
+    }
 
-pair<int, int> max_decreasing_sequence(int*, int);
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        set<vector<int>> triples;
+
+        sort(nums.begin(), nums.end());
+        for (int num : nums)
+            cout << num << ' ';
+        cout << '\n';
+        int N = (int)nums.size();
+        for (int i = 0; i < N; ++i) {
+            vector<pair<int, int>> V = twoSum(nums, -nums[i], i);
+            for (pair<int, int> p : V) {
+                vector<int> T = {nums[i], p.first, p.second};
+                sort(T.begin(), T.end());
+                triples.insert(T);
+            }
+        }
+
+        vector<vector<int>> answer;
+        for (const vector<int> &T : triples)
+            answer.push_back(T);
+        return answer;
+    }
+};
+
+Solution solution;
 
 int main() {
-    int N,
-        A[MAX_SIZE];
-    cin >> N;
-    for (int i = 0; i < N; ++i)
-        cin >> A[i];
-    int h = (int)(min_element(A, A + N) - A);
-    pair<int, int> ans = max_decreasing_sequence(A, h);
-    cout << ans.first << ' ' << ans.second << '\n';
+    vector<int> nums = {0, -3, 2, -4, -1, -3, -2, 1, -1, 1, 3};
+    auto ans = solution.threeSum(nums);
+    for (vector<int> triple : ans)
+        cout << triple[0] << ' ' << triple[1] << ' ' << triple[2] << '\n';
     return 0;
-}
-
-pair<int, int> max_decreasing_sequence(int *A, int N) {
-    int max_len = 0,
-        j = -1,
-        cur_len = 1;
-    for (int i = 1; i < N; ++i)
-        if (A[i - 1] > A[i])
-            ++cur_len;
-        else {
-            if (cur_len > max_len) {
-                max_len = cur_len;
-                j = i - cur_len;
-            }
-            cur_len = 1;
-        }
-    max_len = max(max_len, cur_len);
-    return make_pair(j, j + max_len - 1);
 }
