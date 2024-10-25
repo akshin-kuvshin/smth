@@ -4,7 +4,6 @@
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
-#include <unistd.h>
 
 #define _RAND_MIN            -100
 #define _RAND_MAX            100
@@ -37,28 +36,19 @@ int main() {
     }
 
     fill_matrix_random(A, N, M);
-    
-    system("clear");
+
     printf_s("Ваша случайно сгенерированная матрица:\n");
     matrix_output(A, N, M);
 
     int r, c;
     get_max_ind(A, N, M, &r, &c);
-    printf_s("Позиция максимального элемента: %d строка, %d столбец.", r + 1, c + 1);
+    printf_s("Позиция максимального элемента: %d строка, %d столбец.\n\n", r + 1, c + 1);
 
-    sleep(8);
-    for (int i = r; i > 0; --i) {
-        system("clear");
-        swap_rows(A, M, i, i - 1);
-        matrix_output(A, N, M);
-        sleep(1);
-    }
-    for (int j = c; j > 0; --j) {
-        system("clear");
-        swap_columns(A, N, j, j - 1);
-        matrix_output(A, N, M);
-        sleep(1);
-    }
+    swap_rows(A, M, 0, r);
+    swap_columns(A, N, 0, c);
+
+    printf_s("Матрица после перемещения:\n");
+    matrix_output(A, N, M);
 
     return 0;    
 }
@@ -71,15 +61,15 @@ void print_row(int len) {
 }
 void array_output(const int *A, int N) {
     for (int i = 0; i < N; ++i)
-        printf_s("|%3d", A[i]);
+        printf_s("|%4d", A[i]);
     printf_s("|\n");
     return;
 }
 void matrix_output(const int A[][MAX_SIZE], int N, int M) {
-    print_row(4 * M + 1);
+    print_row(5 * M + 1);
     for (int i = 0; i < N; ++i) {
         array_output(A[i], M);
-        print_row(4 * M + 1);
+        print_row(5 * M + 1);
     }
     return;
 }

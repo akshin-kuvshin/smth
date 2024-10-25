@@ -7,8 +7,12 @@
 #include <unistd.h>
 #include "array_matrix_ops.h"
 
+// P.S.: здесь используется команда "clear", которая работает в Linux-подобных терминалах, поэтому не запускать через всякие cmd и PowerShell!!!
+const char *clear_command = "clear";
+
 int main() {
     srand(time(NULL));
+    system(clear_command);
 
     int N,
         M;
@@ -21,26 +25,29 @@ int main() {
 
     int **A = matrix(N, M);
     fill_matrix_random(A, N, M);
-    
-    system("clear");
-    printf_s("Ваша случайно сгенерированная матрица:\n");
-    matrix_output(A, N, M);
-
     int r, c;
     matrix_max_ind(A, N, M, &r, &c);
+    
+    system(clear_command);
+    printf_s("Ваша случайно сгенерированная матрица:\n");
+    matrix_output_with_highlighting(A, N, M, r, c);
     printf_s("Позиция максимального элемента: %d строка, %d столбец.", r + 1, c + 1);
+    sleep(5);
 
-    sleep(8);
-    for (int i = r; i > 0; --i) {
-        system("clear");
-        swap_rows(A, M, i, i - 1);
-        matrix_output(A, N, M);
+    system(clear_command);
+    matrix_output_with_highlighting(A, N, M, r, c);
+    sleep(1);
+    // Здесь и далее перемещаю только соседние строки/столбцы (т.е. перемещаю наибольший элемент только на одну позицию вверх/влево) для удобства визуализации.
+    while (r > 0) {
+        system(clear_command);
+        swap_rows(A, M, r, r - 1);
+        matrix_output_with_highlighting(A, N, M, --r, c);
         sleep(1);
     }
-    for (int j = c; j > 0; --j) {
-        system("clear");
-        swap_columns(A, N, j, j - 1);
-        matrix_output(A, N, M);
+    while (c > 0) {
+        system(clear_command);
+        swap_columns(A, N, c, c - 1);
+        matrix_output_with_highlighting(A, N, M, r, --c);
         sleep(1);
     }
 

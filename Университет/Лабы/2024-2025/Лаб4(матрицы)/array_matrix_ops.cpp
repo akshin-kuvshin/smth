@@ -19,7 +19,7 @@ void array_input(int *A, int N) {
 
 void array_output(const int *A, int N) {
     for (int i = 0; i < N; ++i)
-        printf_s("|%3d", A[i]);
+        printf_s("|%4d", A[i]);
     printf_s("|\n");
     return;
 }
@@ -31,10 +31,27 @@ void matrix_input(int **A, int N, int M) {
 }
 
 void matrix_output(int **A, int N, int M) {
-    print_row(4 * M + 1);
+    print_row(5 * M + 1);
     for (int i = 0; i < N; ++i) {
         array_output(A[i], M);
-        print_row(4 * M + 1);
+        print_row(5 * M + 1);
+    }
+    return;
+}
+
+void matrix_output_with_highlighting(int **A, int N, int M, int i, int j) {
+    printf_s("    "); // 4 пробела: 2, чтобы дойти до первой ячейки; 2, чтобы дойти до нужного места в ячейке
+    for (int _ = 0; _ < j; ++_)
+        printf_s("     "); // 5 пробелов, чтобы перейти к идентичной позиции в следующей ячейке
+    printf_s("|\n "); // Ставим "стрелочку", переходим на новую строку и ставим пробел, чтобы вызов print_row не съехал влево
+    print_row(5 * M + 1);
+    for (int _i = 0; _i < N; ++_i) {
+        // Здесь и далее все пробелы нужны, чтобы вся таблица не съехала влево
+        // Один из пробелов заменяется "стрелочкой"
+        printf_s((_i == i) ? "-" : " ");
+        array_output(A[_i], M);
+        printf_s(" ");
+        print_row(5 * M + 1);
     }
     return;
 }
