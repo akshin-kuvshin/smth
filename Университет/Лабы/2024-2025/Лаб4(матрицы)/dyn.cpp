@@ -36,19 +36,19 @@ int main() {
 
     system(clear_command);
     matrix_output_with_highlighting(A, N, M, r, c);
-    sleep(1);
+    sleep(2);
     // Здесь и далее перемещаю только соседние строки/столбцы (т.е. перемещаю наибольший элемент только на одну позицию вверх/влево) для удобства визуализации.
     while (r > 0) {
         system(clear_command);
         swap_rows(A, M, r, r - 1);
         matrix_output_with_highlighting(A, N, M, --r, c);
-        sleep(1);
+        sleep(2);
     }
     while (c > 0) {
         system(clear_command);
         swap_columns(A, N, c, c - 1);
         matrix_output_with_highlighting(A, N, M, r, --c);
-        sleep(1);
+        sleep(2);
     }
 
     printf_s("Программа завершена успешно: максимальный элемент матрицы теперь в верхнем левом углу!\n");
