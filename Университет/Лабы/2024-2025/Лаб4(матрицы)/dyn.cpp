@@ -40,7 +40,7 @@ int main() {
     // Здесь и далее перемещаю только соседние строки/столбцы (т.е. перемещаю наибольший элемент только на одну позицию вверх/влево) для удобства визуализации.
     while (r > 0) {
         system(clear_command);
-        swap_rows(A, M, r, r - 1);
+        swap_rows(A, r, r - 1);
         matrix_output_with_highlighting(A, N, M, --r, c);
         sleep(2);
     }

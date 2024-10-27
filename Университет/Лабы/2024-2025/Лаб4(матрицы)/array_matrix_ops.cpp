@@ -107,7 +107,7 @@ void swap_arrays(int *A, int *B, int N) {
     return;
 }
 
-void swap_rows(int **A, int M, int i, int j) {
+void swap_rows(int **A, int i, int j) {
     int *tmp = A[i];
     A[i] = A[j];
     A[j] = tmp;
