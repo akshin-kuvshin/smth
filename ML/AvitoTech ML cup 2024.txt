@@ -1,0 +1,4 @@
+There is a dataset which weighs ~1Gb in this competition, so I uploaded all files into Kaggle and worked there.
+
+My Kaggle profile: https://www.kaggle.com/danilaaxyonov
+You can find all required and created by me files in "AvitoTech ML cup 2024" collection, if I won't forget to change it from 'private' to 'public') :D
