@@ -12,7 +12,7 @@ int nearest_char(char *text, int from) {
 }
 
 int text_to_words(char *text, char **words) {
-    int top = 0; // текущее кол-во найденных слов = первый незанятый индекс для слова в words
+    int top = 0; // текущее кол-во найденных слов = первый незанятый индекс для слова в массиве слов (words)
 
     int word_begin = nearest_char(text, 0);
     while (text[word_begin]) {
