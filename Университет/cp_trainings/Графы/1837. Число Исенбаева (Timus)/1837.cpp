@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+#include <set>
 #include <map>
 #include <queue>
 using namespace std;
@@ -13,7 +13,7 @@ typedef long long int lli;
 #define pb(_elem)           push_back(_elem)
 
 void solve();
-lli bfs(string, const map<string, vector<string>>&);
+void bfs(string, const map<string, set<string>>&, map<string, lli>&);
 
 int main() {
     ios::sync_with_stdio(false);
@@ -25,7 +25,7 @@ int main() {
 }
 
 void solve() {
-    map<string, vector<string>> G;
+    map<string, set<string>> G;
 
     lli n;
     cin >> n;
@@ -34,26 +34,36 @@ void solve() {
                b,
                c;
         cin >> a >> b >> c;
-        G[a].pb(b); G[a].pb(c);
-        G[b].pb(a); G[b].pb(c);
-        G[c].pb(a); G[c].pb(b);
+        G[a].insert(b); G[a].insert(c);
+        G[b].insert(a); G[b].insert(c);
+        G[c].insert(a); G[c].insert(b);
+    }
+
+    // It turns out that there is can be no 'Isenbaev' in any team
+    if (not G.contains("Isenbaev")) {
+        for (const pair<string, set<string>> &p : G)
+            cout << p.first << " undefined\n";
+        return;
     }
     
-    for (const pair<string, vector<string>> &p : G) {
+    map<string, lli> ress;
+    bfs("Isenbaev", G, ress);
+    for (const pair<string, lli> &p : ress) {
         cout << p.first << ' ';
-        lli res = bfs(p.first, G);
-        if (res == -1LL)
+        if (p.second == -1LL)
             cout << "undefined\n";
-        else // res != -1LL
-            cout << res << '\n';
+        else // p.second != -1LL
+            cout << p.second << '\n';
     }
     
     return;
 }
 
-lli bfs(string start, const map<string, vector<string>> &G) {
+void bfs(string start, const map<string, set<string>> &G, map<string, lli> &ress) {
     queue<pair<string, lli>> Q;
     map<string, bool> used;
+    for (const pair<string, set<string>> &p : G)
+        ress[p.first] = -1LL;
 
     Q.push(mp(start, 0LL));
     used[start] = true;
@@ -61,15 +71,13 @@ lli bfs(string start, const map<string, vector<string>> &G) {
         pair<string, lli> cur = Q.front();
         Q.pop();
 
-        if (cur.first == "Isenbaev")
-            return cur.second;
+        ress[cur.first] = cur.second;
 
-        for (const string &ns : G.at(cur.first)) {
+        for (const string &ns : G.find(cur.first)->second) {
             if (used[ns]) continue;
             Q.push(mp(ns, cur.second + 1LL));
             used[ns] = true;
         }
     }
-
-    return -1LL;
+    return;
 }
