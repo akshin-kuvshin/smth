@@ -1,0 +1,2 @@
+I have solved example problems ("Shell Game" and "Mixing Milk") a long ago and I don't know where their solutions are, so they are not in this folder.
+P.P.S.: the same situation with problem E.2 "Speeding Ticket" (USACO 2015 December Contest Bronze, Problem 2).
