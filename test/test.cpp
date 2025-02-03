@@ -1,10 +1,9 @@
 #include <iostream>
-#include <unordered_set>
 using namespace std;
+using lli = long long int;
 
 int main() {
-    unordered_set<int> S;
-    S.insert(1); S.insert(5);
-    cout << S.contains(1) << '\n' << S.contains(12) << '\n';
+    lli x = 0b1000LL;
+    cout << x << '\n';
     return 0;
 }
