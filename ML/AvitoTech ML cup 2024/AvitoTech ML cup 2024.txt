@@ -1,3 +1,0 @@
-I don't add all datasets in this folder because all of them weigh more than 1Gb. You can find all data on the official competition page: https://ods.ai/competitions/avitotechmlcup2024.
-
-In this folder you can find 2 notebooks and 2 submissions. My score in this competition is 0,560775440410529 (ROC-AUC metrics).
