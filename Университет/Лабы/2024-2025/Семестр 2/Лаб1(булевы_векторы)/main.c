@@ -5,6 +5,7 @@
 // author: Danila "akshin_" Axyonov
 
 #include <stdio.h>
+#include <stdbool.h>
 #include <string.h>
 #include <assert.h>
 #include <iso646.h>
@@ -23,23 +24,28 @@ int main() {
 
     // Так или иначе, рассматриваем тетрады битов только целиком.
     // При необходимости дополняем булев вектор ведущими нулями.
-    int sections_amount = (len + 3) / 4;
+    if (len % 4)
+        len = len - len % 4 + 4;
+    int sections_amount = len / 4;
 
-    // Было
     printf("Было:\t");
-    for (int section = sections_amount - 1; section >= 0; --section) {
-        print_BV_seg(V, section * 4 + 3, section * 4);
-        printf(" ");
-    }
-    printf("\n");
+    print_BV_sep4(V, len);
 
-    // Стало
-    printf("Стало:\t");
-    for (int section = 0; section < sections_amount; ++section) {
-        print_BV_seg(V, section * 4 + 3, section * 4);
-        printf(" ");
+    BV W = V;
+    for (int section_a = 0; section_a < sections_amount / 2; ++section_a) {
+        int section_b = sections_amount - 1 - section_a;
+        for (int inner_ind = 0; inner_ind < 4; ++inner_ind) {
+            bool bit_a = (bool)(W & (1ULL << (section_a * 4 + inner_ind))),
+                 bit_b = (bool)(W & (1ULL << (section_b * 4 + inner_ind)));
+            if (bit_a != bit_b) {
+                W ^= (1ULL << (section_a * 4 + inner_ind));
+                W ^= (1ULL << (section_b * 4 + inner_ind));
+            }
+        }
     }
-    printf("\n");
+
+    printf("Стало:\t");
+    print_BV_sep4(W, len);
 
     return 0;
 }

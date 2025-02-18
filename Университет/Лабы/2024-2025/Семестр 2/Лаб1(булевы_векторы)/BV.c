@@ -16,10 +16,12 @@ BV string_to_BV(const char* S, int len) {
     return V;
 }
 
-void print_BV_seg(BV V, int left, int right) {
-    while (left >= right) {
-        printf("%c", (V & (1ULL << left)) ? '1' : '0');
-        --left;
+void print_BV_sep4(BV V, int len) {
+    for (int i = len - 1; i >= 0; --i) {
+        printf("%c", (V & (1ULL << i)) ? '1' : '0');
+        if (not (i % 4))
+            printf(" ");
     }
+    printf("\n");
     return;
 }
