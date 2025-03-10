@@ -1,0 +1,3 @@
+link: https://algocourses.ru/students2025/
+login: algo-students-2025-aksenov
+password: J1HYUOHD8e

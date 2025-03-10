@@ -64,7 +64,7 @@ void solve() {
                 ans.pb(mp(1LL, 1LL));
         }
     
-    cout << ans.size() << '\n'; // забыл вывести размер ans-а...(((((
+    cout << ans.size() << '\n'; // изначально забыл вывести размер ans-а...(((((
     for (auto [cmd, cnt] : ans)
         cout << cmd << ' ' << cnt << '\n';
     return;
