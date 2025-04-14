@@ -30,15 +30,11 @@ vector<lli> prefix(const string& S) {
     p[0] = 0LL;
     for (int i = 1; i < (int)len; ++i) {
         lli k = p[i - 1];
-        while (k > 0LL) {
-            if (S[i] == S[k]) {
-                p[i] = k + 1LL;
-                break;
-            }
+        while (k > 0LL and S[i] != S[k])
             k = p[k - 1LL];
-        }
-        if (S[i] == S[0])
-            p[i] = max(p[i], 1LL);
+        if (S[i] == S[k])
+            ++k;
+        p[i] = k;
     }
     return p;
 }

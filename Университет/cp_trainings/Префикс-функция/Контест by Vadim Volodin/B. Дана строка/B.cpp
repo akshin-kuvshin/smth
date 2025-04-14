@@ -24,7 +24,7 @@ int main() {
     lli S_len = (lli)S.size(),
         Ap_len = (lli)p.size();
     vector<lli> ans;
-    for (int i = 0; i < (int)Ap_len; ++i)
+    for (int i = (int)S_len + 1; i < (int)Ap_len; ++i)
         if (p[i] == S_len)
             ans.pb((lli)i - 2LL * S_len + 1LL);
     
@@ -41,15 +41,11 @@ vector<lli> prefix(const string& S) {
     p[0] = 0LL;
     for (int i = 1; i < (int)len; ++i) {
         lli k = p[i - 1];
-        while (k > 0LL) {
-            if (S[i] == S[k]) {
-                p[i] = k + 1LL;
-                break;
-            }
+        while (k > 0LL and S[i] != S[k])
             k = p[k - 1LL];
-        }
-        if (S[i] == S[0])
-            p[i] = max(p[i], 1LL);
+        if (S[i] == S[k])
+            ++k;
+        p[i] = k;
     }
     return p;
 }
