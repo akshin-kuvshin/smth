@@ -11,7 +11,7 @@ void print_array(int* arr, int len) {
 }
 
 void fill_array_random(int* arr, int len) {
-    for (int i = 1; i < len; ++i)
+    for (int i = 0; i < len; ++i)
         arr[i] = random(__RANDOM_MIN, __RANDOM_MAX);
     return;
 }
