@@ -1,0 +1,3 @@
+link: https://ejudge.algocourses.ru/new-client?contest_id=64008
+login: code-gym-2025-tmk-06
+password: q3r63n4r
