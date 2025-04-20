@@ -44,31 +44,26 @@ void solve() {
         len += ci;
     }
     
-    vector<vector<lli>> dp(len + 1LL, vector<lli>(N, 0LL));
-    dp[0][0] = 1LL; dp[c[0]][0] = 1LL;
+    lli lower_half_len = (len >> 1),
+        upper_half_len = ((len + 1LL) >> 1);
+    vector<vector<lli>> dp(lower_half_len + 1LL, vector<lli>(N, 0LL));
+    dp[0][0] = 1LL;
+    if (c[0] <= lower_half_len)
+        dp[c[0]][0] = 1LL;
     for (int j = 1; j < (int)N; ++j)
-        for (int i = 0; i <= (int)len; ++i) {
+        for (int i = 0; i <= (int)lower_half_len; ++i) {
             dp[i][j] = dp[i][j - 1];
-            if (c[j] and (lli)i - c[j] >= 0LL) {
-                dp[i][j] += dp[(lli)i - c[j]][j - 1];
-                dp[i][j] %= MOD;
-            }
+            if (c[j] and (lli)i - c[j] >= 0LL)
+                dp[i][j] = (dp[i][j] + dp[(lli)i - c[j]][j - 1]) % MOD;
         }
-    
-    lli ans = dp[len >> 1].back();
-    ans *= fact[len >> 1];
-    ans %= MOD;
-    ans *= fact[(len + 1LL) >> 1];
-    ans %= MOD;
 
     lli denom = 1LL;
-    for (lli ci : c) {
-        denom *= fact[ci];
-        denom %= MOD;
-    }
+    for (lli ci : c)
+        denom = (denom * fact[ci]) % MOD;
 
-    ans *= inv(denom);
-    ans %= MOD;
+    lli ans = 1LL;
+    for (lli k : {dp[lower_half_len].back(), fact[lower_half_len], fact[upper_half_len], inv(denom)})
+        ans = (ans * k) % MOD;
 
     cout << ans << '\n';
     return;
