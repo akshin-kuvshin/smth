@@ -60,11 +60,8 @@ int main() {
             >> course[top].first_name
             >> course[top].patronymic
             >> course[top].group;
-        course[top].marks_sum = 0;
-        for (int i = 0; i < __SUBJECTS_AMOUNT; ++i) {
+        for (int i = 0; i < __SUBJECTS_AMOUNT; ++i)
             fin >> course[top].marks[i];
-            course[top].marks_sum += course[top].marks[i];
-        }
     }
 
     if (fin.eof())
@@ -112,6 +109,7 @@ int main() {
             ++kth_group_size;
     if (not kth_group_size) {
         cout << "Группы с номером " << k << " нет." << endl;
+        delete[] course;
         return 0;
     }
 
@@ -128,7 +126,7 @@ int main() {
         cout << i + 1 << ") "
              << kth_group[i].last_name << ' '
              << kth_group[i].first_name << ' '
-             << kth_group[i].marks_sum << endl;
+             << marks_sum(kth_group[i]) << endl;
 
 
 
@@ -140,5 +138,5 @@ int main() {
 }
 
 bool marks_sum_desc_cmp(Stud s1, Stud s2) {
-    return s1.marks_sum > s2.marks_sum;
+    return marks_sum(s1) > marks_sum(s2);
 }

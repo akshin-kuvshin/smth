@@ -1,8 +1,8 @@
 #ifndef __STUD
 #define __STUD
 
-const int __MAX_NAME_LEN    = 20,
-          __SUBJECTS_AMOUNT = 3;
+#define __MAX_NAME_LEN      20
+#define __SUBJECTS_AMOUNT   3
 
 struct Stud {
     char last_name[__MAX_NAME_LEN];
@@ -10,7 +10,8 @@ struct Stud {
     char patronymic[__MAX_NAME_LEN];
     int group;
     int marks[__SUBJECTS_AMOUNT];
-    int marks_sum;
 };
+
+int marks_sum(Stud s);
 
 #endif

@@ -1,7 +1,7 @@
 .PHONY: all
 
 TARGET = main
-SRC = main.cpp
+SRC = main.cpp Stud.cpp
 CC = g++
 CFLAGS = -std=c++20 -Wall -Wextra -Wpedantic -Werror
 
