@@ -2,6 +2,7 @@
 #define __BM
 
 #include <stdbool.h>
+#include "BV.h"
 
 typedef BV* BM;
 
