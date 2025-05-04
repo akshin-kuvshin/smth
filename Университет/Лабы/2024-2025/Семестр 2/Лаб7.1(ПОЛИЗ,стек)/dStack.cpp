@@ -1,9 +1,9 @@
 // author: Danila "akshin_" Axyonov
 
-#include "iStack.hpp"
+#include "dStack.hpp"
 
 #include <iostream>
-#include <cstdlib>
+// #include <cstdlib>
 
 using namespace std;
 
@@ -12,7 +12,7 @@ using namespace std;
 
 
 
-iNode::iNode(int __val, iNode* __next) {
+dNode::dNode(double __val, dNode* __next) {
     this->val = __val;
     this->next = __next;
     return;
@@ -22,33 +22,36 @@ iNode::iNode(int __val, iNode* __next) {
 
 
 
-iStack::iStack() {
+dStack::dStack() {
     this->head = nullptr;
+    this->size = 0;
     return;
 }
 
-iStack::~iStack() {
+dStack::~dStack() {
     this->clear();
     return;
 }
 
-void iStack::push(int val) {
-    this->head = new iNode(val, this->head);
+void dStack::push(double val) {
+    this->head = new dNode(val, this->head);
+    ++(this->size);
     return;
 }
 
-void iStack::pop() {
+void dStack::pop() {
     if (this->empty()) {
         cerr << "\t(!) Ошибка: была вызвана функция pop() на пустом стеке." << endl;
         exit(1);
     }
-    iNode* last = this->head;
+    dNode* last = this->head;
     this->head = this->head->next;
     delete last;
+    --(this->size);
     return;
 }
 
-int iStack::top() {
+double dStack::top() {
     if (this->empty()) {
         cerr << "\t(!) Ошибка: была вызвана функция top() на пустом стеке." << endl;
         exit(1);
@@ -56,11 +59,11 @@ int iStack::top() {
     return this->head->val;
 }
 
-bool iStack::empty() {
-    return not (bool)(this->head);
+bool dStack::empty() {
+    return (this->size == 0);
 }
 
-void iStack::clear() {
+void dStack::clear() {
     while (not this->empty())
         this->pop();
     return;
