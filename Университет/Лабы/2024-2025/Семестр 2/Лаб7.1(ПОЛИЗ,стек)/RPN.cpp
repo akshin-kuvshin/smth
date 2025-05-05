@@ -29,13 +29,6 @@ int priority(char operation) {
 
 
 
-/*
-пысы: не знаю, как достаточно просто реализовать проверку на отсутствие
-операции/операнда для выражений с буквами/словами, т.к. проверка на это
-делается во время вычисления результата ПОЛИЗ-выражения, а для выражений
-с буквами/словами данный этап не запускается в силу неоднозначности
-переменных (этих самых букв/слов).
-*/
 void convert_to_RPN
 (const char* traditional, char* RPN)
 {
@@ -149,6 +142,84 @@ void convert_to_RPN
     RPN[top - 1] = '\0';    // (top - 1), потому что в конце всегда ставим пробел =>
                             // => под индексом (top - 1) находится "висячий" пробел =>
                             // => запишем нуль-терминатор туда.
+
+    return;
+}
+
+
+
+void check_RPN
+(const char* RPN)
+{
+    int stack_size = 0;
+
+    int i = 0;
+    while (RPN[i])
+    {
+        if (RPN[i] == ' ') {
+            ++i;
+            continue;
+        }
+
+        if (is_digit(RPN[i]))
+        {
+            if (RPN[i] == '0' and RPN[i + 1] and is_digit(RPN[i + 1])) {
+                cerr << endl
+                     << "(!) Ошибка: обнаружен незначащий нуль в числе." << endl
+                     << endl;
+                highlight_position_cerr(i);
+                cerr << RPN << endl;
+                exit(1);
+            }
+            while (RPN[i] and is_digit(RPN[i]))
+                ++i;
+            ++stack_size;
+        }
+        else if (is_letter(RPN[i]))
+        {
+            while (RPN[i] and is_letter(RPN[i]))
+                ++i;
+            ++stack_size;
+        }
+        else if (is_operation(RPN[i]))
+        {
+            if (stack_size < 2) {
+                cerr << endl
+                     << "(!) Ошибка: недостаточно операндов для выполнения операции." << endl
+                     << endl;
+                highlight_position_cerr(i);
+                cerr << RPN << endl;
+                exit(1);
+            }
+
+            --stack_size;            
+            ++i;
+        }
+        else
+        {
+            cerr << endl
+                 << "(!) Ошибка: обнаружен неизвестный символ в ПОЛИЗ-выражении." << endl
+                 << endl;
+            highlight_position_cerr(i);
+            cerr << RPN << endl;
+            exit(1);
+        }
+    }
+
+    if (stack_size == 0) { // если стек пуст, при этом мы дошли до сюда (=> не словили ни одной ошибки),
+                        // то исходное ПОЛИЗ-выражение (строка RPM) пусто(-а).
+        cerr << endl
+             << "(!) Ошибка: ПОЛИЗ-выражение пусто." << endl;
+        exit(1);
+    }
+    if (stack_size > 1) {
+        cerr << endl
+             << "(!) Ошибка: ожидалась операция, ПОЛИЗ-выражение не закончено." << endl
+             << endl;
+        highlight_position_cerr(i);
+        cerr << RPN << endl;
+        exit(1);
+    }
 
     return;
 }
