@@ -2,14 +2,17 @@
 
 /*
 Задание:
-    Написать программу формирования и вычисления ПОЛИЗ-выражения, содержащего буквы и многозначные числа.
-    При работе со стеком предусмотреть проверку на ошибки ввода формулы (потеряна открывающая или
+    Написать программу формирования и вычисления ПОЛИЗ-выражения,
+    содержащего буквы и многозначные числа.
+    При работе со стеком предусмотреть проверку
+    на ошибки ввода формулы (потеряна открывающая или
     закрывающая скобка, потеряна операция, потерян операнд).
 */
 
 #include <iostream>
 // #include <cstdio>
 #include "RPN.hpp"
+#include "char_ops.hpp"
 
 using namespace std;
 
@@ -35,9 +38,30 @@ int main() {
 
     if (cmd == 1)
     {
+        char traditional[MAX_LEN];
+        cout << endl
+             << "Введите выражение в его традиционной (инфиксной) форме записи:" << endl
+             << "> " << flush;
+        getchar();
+        gets(traditional);
 
-        // !!!TODO!!!
-
+        char RPN[MAX_LEN];
+        convert_to_RPN(traditional, RPN);
+        cout << endl
+             << "Выражение в форме ПОЛИЗ: " << RPN << endl;
+        
+        bool is_numeric_RPN = true;
+        for (int i = 0; RPN[i]; ++i)
+            if (not (RPN[i] == ' ' or is_digit(RPN[i]) or is_operation(RPN[i]))) {
+                is_numeric_RPN = false;
+                break;
+            }
+        if (is_numeric_RPN) {
+            double res = count_RPN(RPN);
+            cout << endl
+                 << "Введённое Вами выражение, наряду с его записью в ПОЛИЗ, не содержит букв/слов, поэтому его результат может быть однозначно посчитан." << endl
+                 << "Результат: " << res << '.' << endl;
+        }
     }
     else // cmd == 2
     {
@@ -50,7 +74,7 @@ int main() {
         
         double res = count_RPN(RPN);
         cout << endl
-             << "Результат: " << res << '.' << endl;
+             << "Результат: " << res << endl;
     }
 
 
