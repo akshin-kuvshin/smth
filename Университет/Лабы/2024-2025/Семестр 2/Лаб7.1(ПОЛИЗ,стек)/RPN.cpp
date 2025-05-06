@@ -1,3 +1,5 @@
+// author: Danila "akshin_" Axyonov
+
 #include "RPN.hpp"
 
 #include <iostream>
@@ -167,7 +169,7 @@ double count_RPN
 (const char* RPN)
 {
     Stack<double> calc;
-    char vars[MAX_VARS_NUMBER][MAX_VAR_NAME_LEN];
+    char vars[MAX_VARS_NUMBER][MAX_VAR_NAME_LEN]; // реализуемо с помощью списка.
     int vars_vals[MAX_VARS_NUMBER]; // варс_валс)
     int vars_top = 0; // vars_top
     bool was_var_requested = false;
@@ -219,7 +221,7 @@ double count_RPN
                 ind = vars_top;
                 ++vars_top;
             }
-            calc.push(vars_vals[ind]);
+            calc.push((double)vars_vals[ind]);
         }
         else if (is_operation(RPN[i]))
         {

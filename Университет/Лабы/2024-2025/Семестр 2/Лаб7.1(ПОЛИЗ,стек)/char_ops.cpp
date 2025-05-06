@@ -1,3 +1,5 @@
+// author: Danila "akshin_" Axyonov
+
 #include "char_ops.hpp"
 
 bool is_digit(char c) {
