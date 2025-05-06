@@ -24,7 +24,7 @@ int main() {
     int cmd;
     cout << "\tВыберите опцию:" << endl
          << "1) Сформировать ПОЛИЗ-выражение на основе традиционной (инфиксной) его записи;" << endl
-         << "2) Вычислить результат уже готового численного (не содержащего букв) ПОЛИЗ-выражения." << endl
+         << "2) Вычислить результат уже готового ПОЛИЗ-выражения." << endl
          << "> " << flush;
     cin >> cmd;
 
@@ -50,25 +50,15 @@ int main() {
         cout << endl
              << "Выражение в форме ПОЛИЗ: " << RPN << endl;
         
-        bool is_numeric_RPN = true;
-        for (int i = 0; RPN[i]; ++i)
-            if (not (RPN[i] == ' ' or is_digit(RPN[i]) or is_operation(RPN[i]))) {
-                is_numeric_RPN = false;
-                break;
-            }
-        if (is_numeric_RPN) {
-            double res = count_RPN(RPN);
-            cout << endl
-                 << "Введённое Вами выражение, наряду с его записью в ПОЛИЗ, не содержит букв/слов, поэтому его результат может быть однозначно посчитан." << endl
-                 << "Результат: " << res << '.' << endl;
-        } else
-            check_RPN(RPN);
+        double res = count_RPN(RPN);
+        cout << endl
+             << "Результат: " << res << endl;
     }
     else // cmd == 2
     {
         char RPN[MAX_LEN];
         cout << endl
-             << "Введите численное ПОЛИЗ-выражение для вычисления его результата:" << endl
+             << "Введите ПОЛИЗ-выражение для вычисления его результата:" << endl
              << "> " << flush;
         getchar();
         gets(RPN);

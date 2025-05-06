@@ -6,6 +6,7 @@
 #include "char_ops.hpp"
 
 using namespace std;
+using lli = long long int;
 using ulli = unsigned long long int;
 
 
@@ -30,11 +31,12 @@ int priority(char operation) {
 
 
 void convert_to_RPN
-(const char* traditional, char* RPN)
+(const char* traditional,
+ char* RPN)
 {
     int top = 0; // RPN_top
     Stack<char> signs;
-    Stack<int> indexes;
+    Stack<int> indexes; // - понадобится нам в одном-единственном месте (см. "!!!").
 
     for (int i = 0; traditional[i];)
     {
@@ -125,7 +127,7 @@ void convert_to_RPN
             cerr << endl
                  << "(!) Ошибка: обнаружена открывающая скобка, которой не соответствует никакая закрывающая." << endl
                  << endl;
-            highlight_position_cerr(ind);
+            highlight_position_cerr(ind); // !!!
             cerr << traditional << endl;
             exit(1);
         }
@@ -148,80 +150,15 @@ void convert_to_RPN
 
 
 
-void check_RPN
-(const char* RPN)
+int find_var
+(const char v[MAX_VAR_NAME_LEN],
+ const char vars[MAX_VARS_NUMBER][MAX_VAR_NAME_LEN],
+ int vars_top)
 {
-    int stack_size = 0;
-
-    int i = 0;
-    while (RPN[i])
-    {
-        if (RPN[i] == ' ') {
-            ++i;
-            continue;
-        }
-
-        if (is_digit(RPN[i]))
-        {
-            if (RPN[i] == '0' and RPN[i + 1] and is_digit(RPN[i + 1])) {
-                cerr << endl
-                     << "(!) Ошибка: обнаружен незначащий нуль в числе." << endl
-                     << endl;
-                highlight_position_cerr(i);
-                cerr << RPN << endl;
-                exit(1);
-            }
-            while (RPN[i] and is_digit(RPN[i]))
-                ++i;
-            ++stack_size;
-        }
-        else if (is_letter(RPN[i]))
-        {
-            while (RPN[i] and is_letter(RPN[i]))
-                ++i;
-            ++stack_size;
-        }
-        else if (is_operation(RPN[i]))
-        {
-            if (stack_size < 2) {
-                cerr << endl
-                     << "(!) Ошибка: недостаточно операндов для выполнения операции." << endl
-                     << endl;
-                highlight_position_cerr(i);
-                cerr << RPN << endl;
-                exit(1);
-            }
-
-            --stack_size;            
-            ++i;
-        }
-        else
-        {
-            cerr << endl
-                 << "(!) Ошибка: обнаружен неизвестный символ в ПОЛИЗ-выражении." << endl
-                 << endl;
-            highlight_position_cerr(i);
-            cerr << RPN << endl;
-            exit(1);
-        }
-    }
-
-    if (stack_size == 0) { // если стек пуст, при этом мы дошли до сюда (=> не словили ни одной ошибки),
-                        // то исходное ПОЛИЗ-выражение (строка RPM) пусто(-а).
-        cerr << endl
-             << "(!) Ошибка: ПОЛИЗ-выражение пусто." << endl;
-        exit(1);
-    }
-    if (stack_size > 1) {
-        cerr << endl
-             << "(!) Ошибка: ожидалась операция, ПОЛИЗ-выражение не закончено." << endl
-             << endl;
-        highlight_position_cerr(i);
-        cerr << RPN << endl;
-        exit(1);
-    }
-
-    return;
+    for (int i = 0; i < vars_top; ++i)
+        if (strcmp(v, vars[i]) == 0)
+            return i;
+    return NOT_FOUND;
 }
 
 
@@ -230,6 +167,10 @@ double count_RPN
 (const char* RPN)
 {
     Stack<double> calc;
+    char vars[MAX_VARS_NUMBER][MAX_VAR_NAME_LEN];
+    int vars_vals[MAX_VARS_NUMBER]; // варс_валс)
+    int vars_top = 0; // vars_top
+    bool was_var_requested = false;
 
     int i = 0;
     while (RPN[i])
@@ -253,6 +194,32 @@ double count_RPN
             while (RPN[i] and is_digit(RPN[i]))
                 current_number = current_number * 10ULL + (ulli)(RPN[i++] - '0');
             calc.push((double)current_number);
+        }
+        else if (is_letter(RPN[i]))
+        {
+            char v[MAX_VAR_NAME_LEN];
+            int v_top = 0;
+            while (RPN[i] and is_letter(RPN[i]))
+                v[v_top++] = RPN[i++];
+            v[v_top] = '\0';
+
+            int ind = find_var(v, vars, vars_top);
+            if (ind == NOT_FOUND) {
+                lli v_val;
+                if (not was_var_requested) {
+                    cout << endl;
+                    was_var_requested = true;
+                }
+                cout << "Введите значение переменной " << v << ':' << endl
+                     << "> ";
+                cin >> v_val;
+
+                strcpy(vars[vars_top], v);
+                vars_vals[vars_top] = v_val;
+                ind = vars_top;
+                ++vars_top;
+            }
+            calc.push(vars_vals[ind]);
         }
         else if (is_operation(RPN[i]))
         {
