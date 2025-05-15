@@ -8,7 +8,6 @@
 #include "char_ops.hpp"
 
 using namespace std;
-using lli = long long int;
 using ulli = unsigned long long int;
 
 
@@ -170,7 +169,7 @@ double count_RPN
 {
     Stack<double> calc;
     char vars[MAX_VARS_NUMBER][MAX_VAR_NAME_LEN]; // реализуемо с помощью списка.
-    int vars_vals[MAX_VARS_NUMBER]; // варс_валс)
+    double vars_vals[MAX_VARS_NUMBER]; // варс_валс)
     int vars_top = 0; // vars_top
     bool was_var_requested = false;
 
@@ -207,7 +206,7 @@ double count_RPN
 
             int ind = find_var(v, vars, vars_top);
             if (ind == NOT_FOUND) {
-                lli v_val;
+                double v_val;
                 if (not was_var_requested) {
                     cout << endl;
                     was_var_requested = true;
@@ -221,7 +220,7 @@ double count_RPN
                 ind = vars_top;
                 ++vars_top;
             }
-            calc.push((double)vars_vals[ind]);
+            calc.push(vars_vals[ind]);
         }
         else if (is_operation(RPN[i]))
         {
