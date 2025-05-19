@@ -1,0 +1,6 @@
+дорешка есть в группе "Дорешки олимпиад ИШИТР ТПУ" на codeforces: https://codeforces.com/group/XA4oYe3fTV
+
+тестирующая система с соревнования (с таблицей результатов):
+site: tpu.contest.codeforces.com
+login: hi4_user_28
+password: 3Cp7ETSyGe

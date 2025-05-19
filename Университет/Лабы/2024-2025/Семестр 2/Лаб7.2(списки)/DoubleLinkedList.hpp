@@ -192,7 +192,9 @@ template<typename T>
 void DoubleLinkedList<T>::print() {
     for (Node<T>* p = this->head->next; p != this->tail; p = p->next)
         cout << p->val << ' ';
-    cout << endl;
+    if (not this->empty())
+        cout << endl;
+    return;
 }
 
 
