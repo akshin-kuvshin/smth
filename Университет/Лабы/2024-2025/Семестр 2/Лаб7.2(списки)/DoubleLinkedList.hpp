@@ -1,3 +1,5 @@
+// author: Danila "akshin_" Axyonov
+
 #ifndef __DOUBLE_LIST
 #define __DOUBLE_LIST
 
@@ -106,7 +108,8 @@ void DoubleLinkedList<T>::push_before(Node<T>* p, T val) {
     q->prev->next = q->next->prev = q;
     ++(this->size);
     return;
-}
+} // можно было бы просто this->push_after(p->prev, val);
+  //                      return;
 
 template<typename T>
 void DoubleLinkedList<T>::push_after(Node<T>* p, T val) {
@@ -119,7 +122,8 @@ void DoubleLinkedList<T>::push_after(Node<T>* p, T val) {
     q->prev->next = q->next->prev = q;
     ++(this->size);
     return;
-}
+} // можно было бы просто this->push_before(p->next, val);
+  //                      return;
 
 // если вызвать следующие два метода на пустом двусвязном списке,
 // то будет напечатано сообщение об ошибке из метода pop(Node<T>* p).
