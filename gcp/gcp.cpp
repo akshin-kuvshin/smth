@@ -23,6 +23,11 @@ int main(int argc, const char* argv[]) {
     }
 
     const string name_cpp = argv[1];
+    if ((int)name_cpp.size() < 5 or not name_cpp.ends_with(".cpp")) {
+        cerr << "ERROR: non-valid name of .cpp-file." << endl;
+        return 1;
+    }
+    
     const string name_exe = name_cpp.substr(0, (int)name_cpp.size() - 3) + "exe";
     
     const string COMMAND =
