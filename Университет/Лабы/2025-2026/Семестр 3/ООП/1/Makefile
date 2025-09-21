@@ -3,7 +3,7 @@
 .PHONY: all
 
 TARGET = main
-SRC = main.cpp CStr.cpp
+SRC = main.cpp CStr.cpp CStrArray.cpp
 CC = g++
 CFLAGS = -std=c++20 -Wall -Wextra -Wpedantic -Werror
 
