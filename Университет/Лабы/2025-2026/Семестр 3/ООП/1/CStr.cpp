@@ -9,8 +9,7 @@
 namespace Lab1
 {
 
-using std::ostream,
-      std::istream;
+using namespace std;
 
 
 char* CStr::rnd_gen(int length) const {

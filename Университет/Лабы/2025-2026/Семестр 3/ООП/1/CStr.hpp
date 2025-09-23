@@ -11,8 +11,7 @@
 namespace Lab1
 {
 
-using std::ostream,
-      std::istream;
+using namespace std;
 
 
 class CStr {
@@ -57,12 +56,12 @@ public:
     }
     
     CStr(const char* source) {
-        assert(source and "ERROR IN [inline CStr::CStr(const char* source)]: source can't be a NULL-pointer.");
+        assert(source and "ERROR IN [CStr::CStr(const char* source)]: source can't be a NULL-pointer.");
         this->line = this->copy(source);
     }
     
     CStr(int length) {
-        assert(length <= 20 and "ERROR IN [inline CStr::CStr(int length)]: length have to be no more than 20.");
+        assert(length <= 20 and "ERROR IN [CStr::CStr(int length)]: length have to be no more than 20.");
         this->line = this->rnd_gen(length);
     }
     
@@ -72,11 +71,10 @@ public:
     
     ~CStr() {
         delete[] this->line;
-        this->line = nullptr;
     }
     
     CStr& operator=(const char* source) {
-        assert(source and "ERROR IN [inline CStr& CStr::operator=(const char* source)]: source can't be a NULL-pointer.");
+        assert(source and "ERROR IN [CStr& CStr::operator=(const char* source)]: source can't be a null-pointer.");
         
         delete[] this->line;
         this->line = this->copy(source);
@@ -133,14 +131,14 @@ public:
     char& operator[](int index) {
         assert(0 <= index and
                index < this->get_length() and
-               "ERROR IN [inline char& CStr::operator[](int index)]: invalid index.");
+               "ERROR IN [char& CStr::operator[](int index)]: invalid index.");
         return this->line[index];
     }
     
     char operator[](int index) const {
         assert(0 <= index and
                index < this->get_length() and
-               "ERROR IN [inline char CStr::operator[](int index) const]: invalid index.");
+               "ERROR IN [char CStr::operator[](int index) const]: invalid index.");
         return this->line[index];
     }
     
