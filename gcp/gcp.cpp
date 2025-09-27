@@ -4,7 +4,8 @@
 "gcp" is a symbiosis of "g++" and "CP". This little program is a combination of standard g++ compiler and my set of flags for it which I use to compile my programs for CP (competitive programming). Actually, current set of flags was borrowed from USACO website (its author is Benq probably).
 
 Usage example:
-> gcp main.cpp
+> gcp main
+(!) the real name of file which is compiling is main.cpp.
 */
 
 #include <iostream>
@@ -22,21 +23,15 @@ int main(int argc, const char* argv[]) {
         return 1;
     }
 
-    const string name_cpp = argv[1];
-    if ((int)name_cpp.size() < 5 or not name_cpp.ends_with(".cpp")) {
-        cerr << "ERROR: non-valid name of .cpp-file." << endl;
-        return 1;
-    }
-    
-    const string name_exe = name_cpp.substr(0, (int)name_cpp.size() - 3) + "exe";
+    const string name = argv[1];
     
     const string COMMAND =
         COMPILER +
-        " " + name_cpp +
+        " " + name + ".cpp" +
         " -std=" + STANDARD +
         " -O" + OPTIMIZATION_LEVEL +
         " " + WFLAGS +
-        " -o " + name_exe;
+        " -o " + name;
     
     system(COMMAND.c_str());
     
