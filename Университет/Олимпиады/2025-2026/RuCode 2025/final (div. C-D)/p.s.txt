@@ -1,0 +1,8 @@
+link: https://ejudge.rucode.net/rucode25-CD-final
+login: rucode-2025-finals-232
+password: jtv5TNBuLq
+
+[final standings]
+a-b: https://ioi-russia.vdi.mipt.ru/~ejudge/showres.cgi?data=xz123res251904off
+c-d: https://ioi-russia.vdi.mipt.ru/~ejudge/showres.cgi?data=xz123res251905off
+e-f: https://ioi-russia.vdi.mipt.ru/~ejudge/showres.cgi?data=xz123res251906off
