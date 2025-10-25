@@ -49,7 +49,7 @@ bool CStrArray::is_sorted(bool (*cmp)(const CStr*, const CStr*)) const {
 }
 
 CStrArray::CStrArray(int length) {
-    assert(length >= 0 and "ERROR IN [CStrArray::CStrArray(int length)]: length have to be a non-negative number.");
+    assert(length >= 0 and "ERROR IN [CStrArray::CStrArray(int length)]: length has to be a non-negative number.");
     
     this->capacity = length;
     this->size = 0;

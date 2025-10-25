@@ -3,8 +3,6 @@
 #include "CStr.hpp"
 #include <iostream>
 #include <cassert>
-#include <cstdlib>
-#include <cstring>
 
 namespace Lab1
 {

@@ -56,12 +56,12 @@ public:
     }
     
     CStr(const char* source) {
-        assert(source and "ERROR IN [CStr::CStr(const char* source)]: source can't be a NULL-pointer.");
+        assert(source and "ERROR IN [CStr::CStr(const char* source)]: source can't be a null-pointer.");
         this->line = this->copy(source);
     }
     
     CStr(int length) {
-        assert(length <= 20 and "ERROR IN [CStr::CStr(int length)]: length have to be no more than 20.");
+        assert(length <= 20 and "ERROR IN [CStr::CStr(int length)]: length has to be no more than 20.");
         this->line = this->rnd_gen(length);
     }
     

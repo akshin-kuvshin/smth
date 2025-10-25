@@ -3,7 +3,7 @@
 .PHONY: all
 
 TARGET = main
-SRC = main.cpp vector_.cpp
+SRC = main.cpp vector.cpp
 CC = g++
 CFLAGS = -std=c++20 -Wall -Wextra -Wpedantic -Werror
 
