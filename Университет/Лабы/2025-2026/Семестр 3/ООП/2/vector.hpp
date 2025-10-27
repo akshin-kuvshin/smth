@@ -16,19 +16,18 @@ private:
     std::size_t size__;
 
 public:
-    explicit vector(std::size_t init_size = 0); // TODO
-    vector(const vector<T>& obj); // TODO
-    vector(vector<T>&& obj) noexcept; // TODO
-    ~vector() noexcept; // TODO
-    vector<T>& operator=(const vector<T>& obj); // TODO
-    vector<T>& operator=(vector<T>&& obj) noexcept; // TODO
-    std::size_t size() const noexcept; // TODO
-    std::size_t capacity() const noexcept; // TODO
+    explicit vector(std::size_t init_size = 0);
+    vector(const vector<T>& obj);
+    vector(vector<T>&& obj) noexcept;
+    ~vector() noexcept;
+    vector<T>& operator=(const vector<T>& obj);
+    vector<T>& operator=(vector<T>&& obj) noexcept;
+    std::size_t size() const noexcept;
     void resize(std::size_t new_size); // TODO
     vector<T> operator+(const vector<T>& obj) const; // TODO; почленно
     vector<T>& operator+=(const vector<T>& obj); // TODO; почленно
-    T& operator[](std::size_t index); // TODO
-    const T& operator[](std::size_t index) const; // TODO
+    T& operator[](std::size_t index);
+    const T& operator[](std::size_t index) const;
 
     template <typename T1>
     friend std::ostream& operator<<(std::ostream& out, const vector<T1>& obj); // TODO
