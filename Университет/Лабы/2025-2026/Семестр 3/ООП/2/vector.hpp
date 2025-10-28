@@ -23,16 +23,16 @@ public:
     vector<T>& operator=(const vector<T>& obj);
     vector<T>& operator=(vector<T>&& obj) noexcept;
     std::size_t size() const noexcept;
-    void resize(std::size_t new_size); // TODO
-    vector<T> operator+(const vector<T>& obj) const; // TODO; почленно
-    vector<T>& operator+=(const vector<T>& obj); // TODO; почленно
+    void resize(std::size_t new_size, const T& value = T{}, bool fill = false);
+    vector<T> operator+(const vector<T>& obj) const;
+    vector<T>& operator+=(const vector<T>& obj);
     T& operator[](std::size_t index);
     const T& operator[](std::size_t index) const;
 
     template <typename T1>
-    friend std::ostream& operator<<(std::ostream& out, const vector<T1>& obj); // TODO
+    friend std::ostream& operator<<(std::ostream& out, const vector<T1>& obj);
     template <typename T1>
-    friend std::istream& operator>>(std::istream& in, vector<T1>& obj); // TODO
+    friend std::istream& operator>>(std::istream& in, vector<T1>& obj);
 };
 
 

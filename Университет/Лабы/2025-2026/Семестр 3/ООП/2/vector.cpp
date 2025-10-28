@@ -1,6 +1,10 @@
 // author: Danila "akshin_" Axyonov
 
 #include "vector.hpp"
+#include <iostream>
+#include <algorithm>
+#include <stdexcept>
+
 
 namespace Lab2
 {
@@ -34,10 +38,8 @@ vector<T>::~vector() noexcept {
 
 template <typename T>
 vector<T>& vector<T>::operator=(const vector<T>& obj) {
-    if (this == &obj)
-        return *this;
-    
-    *this = vector<T>(obj);
+    if (this != &obj)
+        *this = vector<T>(obj);
     return *this;
 }
 
@@ -59,6 +61,52 @@ std::size_t vector<T>::size() const noexcept {
 }
 
 template <typename T>
+void vector<T>::resize(std::size_t new_size, const T& value, bool fill) {
+    if (size__ == new_size) {
+        if (fill)
+            for (std::size_t i = 0; i < size__; ++i)
+                data__[i] = value;
+        return;
+    }
+    
+    T* new_data = new T[new_size];
+    if (fill)
+        for (std::size_t i = 0; i < new_size; ++i)
+            new_data[i] = value;
+    else {
+        auto min_size = std::min(size__, new_size);
+        for (std::size_t i = 0; i < min_size; ++i)
+            new_data[i] = std::move(data__[i]);
+        for (std::size_t i = min_size; i < new_size; ++i)
+            new_data[i] = value;
+    }
+    delete[] data__;
+    size__ = new_size;
+    data__ = new_data;
+}
+
+template <typename T>
+vector<T> vector<T>::operator+(const vector<T>& obj) const {
+    if (size__ != obj.size__)
+        throw std::domain_error("SIZES OF THE ADDED VECTOR ARE UNEQUAL.");
+    
+    vector<T> result(*this);
+    for (std::size_t i = 0; i < size__; ++i)
+        result.data__[i] += obj.data__[i];
+    return result;
+}
+
+template <typename T>
+vector<T>& vector<T>::operator+=(const vector<T>& obj) {
+    if (size__ != obj.size__)
+        throw std::domain_error("SIZES OF THE ADDED VECTOR ARE UNEQUAL.");
+    
+    for (std::size_t i = 0; i < size__; ++i)
+        data__[i] += obj.data__[i];
+    return *this;
+}
+
+template <typename T>
 T& vector<T>::operator[](std::size_t index) {
     if (index >= size__)
         throw std::out_of_range("INVALID INDEX.");
@@ -70,6 +118,22 @@ const T& vector<T>::operator[](std::size_t index) const {
     if (index >= size__)
         throw std::out_of_range("INVALID INDEX.");
     return data__[index];
+}
+
+template <typename T>
+std::ostream& operator<<(std::ostream& out, const vector<T>& obj) {
+    if (obj.size__ > 0)
+        out << obj.data__[0];
+    for (std::size_t i = 1; i < obj.size__; ++i)
+        out << ' ' << obj.data__[i];
+    return out;
+}
+
+template <typename T>
+std::istream& operator>>(std::istream& in, vector<T>& obj) {
+    for (std::size_t i = 0; i < obj.size__; ++i)
+        in >> obj.data__[i];
+    return in;
 }
 
 
