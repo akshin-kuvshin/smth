@@ -18,7 +18,7 @@ private:
     std::size_t size__;
 
 public:
-    explicit vector(std::size_t init_size = 0);
+    explicit vector(std::size_t init_size = 0, const T& value = T{});
     vector(const vector<T>& obj);
     vector(vector<T>&& obj) noexcept;
     ~vector() noexcept;
@@ -42,13 +42,17 @@ public:
 
 
 template <typename T>
-vector<T>::vector(std::size_t init_size) {
+vector<T>::vector(std::size_t init_size, const T& value) {
     size__ = init_size;
-    data__ = new T[size__]{};
+    data__ = new T[size__];
+    for (std::size_t i = 0; i < size__; ++i)
+        data__[i] = value;
 }
 
 template <typename T>
-vector<T>::vector(const vector<T>& obj) : vector(obj.size__) {
+vector<T>::vector(const vector<T>& obj) {
+    size__ = obj.size__;
+    data__ = new T[size__];
     for (std::size_t i = 0; i < size__; ++i)
         data__[i] = obj.data__[i];
 }
@@ -105,7 +109,7 @@ void vector<T>::resize(std::size_t new_size, const T& value, bool fill) {
         for (std::size_t i = 0; i < new_size; ++i)
             new_data[i] = value;
     else {
-        auto min_size = std::min(size__, new_size);
+        std::size_t min_size = std::min(size__, new_size);
         for (std::size_t i = 0; i < min_size; ++i)
             new_data[i] = std::move(data__[i]);
         for (std::size_t i = min_size; i < new_size; ++i)
@@ -121,7 +125,7 @@ vector<T> vector<T>::operator+(const vector<T>& obj) const {
     if (size__ != obj.size__)
         throw std::domain_error("SIZES OF THE ADDED VECTOR ARE UNEQUAL.");
     
-    vector<T> result(*this);
+    vector<T> result = *this;
     for (std::size_t i = 0; i < size__; ++i)
         result.data__[i] += obj.data__[i];
     return result;
@@ -171,4 +175,3 @@ std::istream& operator>>(std::istream& in, vector<T>& obj) {
 }
 
 #endif
-
