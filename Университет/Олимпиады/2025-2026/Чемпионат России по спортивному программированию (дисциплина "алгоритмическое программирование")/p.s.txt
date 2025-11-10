@@ -1,0 +1,3 @@
+link: https://official.contest.yandex.ru/contest/84387/
+login: fsp-champ-rus-2025-old-232
+password: mJ7tqLnDxR
