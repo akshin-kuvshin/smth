@@ -14,4 +14,3 @@ GROUP BY
     Отчество
 HAVING COUNT(П.Номер_протокола) <= 1
 ORDER BY 2, 1;
-

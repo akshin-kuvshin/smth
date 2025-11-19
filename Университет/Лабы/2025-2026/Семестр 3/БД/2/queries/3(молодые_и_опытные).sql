@@ -15,4 +15,3 @@ GROUP BY
     Отчество,
     Дата_рождения
 HAVING DATEDIFF('yyyy', MIN(ВУ.Дата_выдачи), DATE()) >= 7;
-

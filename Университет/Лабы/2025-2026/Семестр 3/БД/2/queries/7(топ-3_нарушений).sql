@@ -21,4 +21,3 @@ ORDER BY
     7 DESC,
     1,
     2;
-

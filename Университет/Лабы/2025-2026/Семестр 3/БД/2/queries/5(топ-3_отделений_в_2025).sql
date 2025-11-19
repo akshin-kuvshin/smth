@@ -6,10 +6,9 @@ FROM
    (ОТДЕЛЕНИЕ AS О
     LEFT JOIN СОТРУДНИК AS С ON О.Код_отделения = С.Код_отделения)
     LEFT JOIN ПРОТОКОЛ AS П ON С.Номер_сотрудника = П.Номер_сотрудника
-WHERE YEAR(Дата) IS NULL
+WHERE Дата IS NULL
    OR YEAR(Дата) = 2025
 GROUP BY
     Название,
     Регион
 ORDER BY 3 DESC, 1;
-
