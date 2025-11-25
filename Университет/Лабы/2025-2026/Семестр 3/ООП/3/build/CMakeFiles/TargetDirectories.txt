@@ -1,0 +1,3 @@
+/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/build/CMakeFiles/oop_lab3.dir
+/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/build/CMakeFiles/edit_cache.dir
+/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/build/CMakeFiles/rebuild_cache.dir
