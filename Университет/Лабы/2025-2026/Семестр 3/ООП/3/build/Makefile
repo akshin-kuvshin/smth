@@ -129,6 +129,30 @@ oop_lab3/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/oop_lab3.dir/build.make CMakeFiles/oop_lab3.dir/build
 .PHONY : oop_lab3/fast
 
+sources/SFile.o: sources/SFile.cpp.o
+.PHONY : sources/SFile.o
+
+# target to build an object file
+sources/SFile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oop_lab3.dir/build.make CMakeFiles/oop_lab3.dir/sources/SFile.cpp.o
+.PHONY : sources/SFile.cpp.o
+
+sources/SFile.i: sources/SFile.cpp.i
+.PHONY : sources/SFile.i
+
+# target to preprocess a source file
+sources/SFile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oop_lab3.dir/build.make CMakeFiles/oop_lab3.dir/sources/SFile.cpp.i
+.PHONY : sources/SFile.cpp.i
+
+sources/SFile.s: sources/SFile.cpp.s
+.PHONY : sources/SFile.s
+
+# target to generate assembly for a file
+sources/SFile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oop_lab3.dir/build.make CMakeFiles/oop_lab3.dir/sources/SFile.cpp.s
+.PHONY : sources/SFile.cpp.s
+
 sources/main.o: sources/main.cpp.o
 .PHONY : sources/main.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... oop_lab3"
+	@echo "... sources/SFile.o"
+	@echo "... sources/SFile.i"
+	@echo "... sources/SFile.s"
 	@echo "... sources/main.o"
 	@echo "... sources/main.i"
 	@echo "... sources/main.s"

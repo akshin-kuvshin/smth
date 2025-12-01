@@ -16,6 +16,12 @@ base_url = r'https://api.hh.ru/'
 # 5) Пишем получившийся pd.DataFrame в .csv-файл;
 # 6) EDA (в другом скрипте/ноутбуке).
 
+# TODO:
+# 1) get_country;
+# 2) get_region;
+# 3) Добавить парсинг проф. навыков (скиллов);
+# 4) Посчитать статистики по скиллам + сферам деятельности.
+
 def main() -> None:
     # 1
     areas_response = requests.get(base_url + 'areas')
