@@ -97,19 +97,51 @@ CMakeFiles/oop_lab3.dir/sources/SFile.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/oop_lab3.dir/sources/SFile.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/sources/SFile.cpp" -o CMakeFiles/oop_lab3.dir/sources/SFile.cpp.s
 
+CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.o: CMakeFiles/oop_lab3.dir/flags.make
+CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.o: /home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр\ 3/ООП/3/sources/SKbrd.cpp
+CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.o: CMakeFiles/oop_lab3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.o -MF CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.o.d -o CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.o -c "/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/sources/SKbrd.cpp"
+
+CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/sources/SKbrd.cpp" > CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.i
+
+CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/sources/SKbrd.cpp" -o CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.s
+
+CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.o: CMakeFiles/oop_lab3.dir/flags.make
+CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.o: /home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр\ 3/ООП/3/sources/SQueue.cpp
+CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.o: CMakeFiles/oop_lab3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.o -MF CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.o.d -o CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.o -c "/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/sources/SQueue.cpp"
+
+CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/sources/SQueue.cpp" > CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.i
+
+CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/sources/SQueue.cpp" -o CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.s
+
 # Object files for target oop_lab3
 oop_lab3_OBJECTS = \
 "CMakeFiles/oop_lab3.dir/sources/main.cpp.o" \
-"CMakeFiles/oop_lab3.dir/sources/SFile.cpp.o"
+"CMakeFiles/oop_lab3.dir/sources/SFile.cpp.o" \
+"CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.o" \
+"CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.o"
 
 # External object files for target oop_lab3
 oop_lab3_EXTERNAL_OBJECTS =
 
 oop_lab3: CMakeFiles/oop_lab3.dir/sources/main.cpp.o
 oop_lab3: CMakeFiles/oop_lab3.dir/sources/SFile.cpp.o
+oop_lab3: CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.o
+oop_lab3: CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.o
 oop_lab3: CMakeFiles/oop_lab3.dir/build.make
 oop_lab3: CMakeFiles/oop_lab3.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable oop_lab3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/akshin/Documents/repos/smth/Университет/Лабы/2025-2026/Семестр 3/ООП/3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable oop_lab3"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/oop_lab3.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

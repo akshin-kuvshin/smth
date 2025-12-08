@@ -1,1 +1,1 @@
-/usr/bin/c++  -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wfloat-equal CMakeFiles/oop_lab3.dir/sources/main.cpp.o CMakeFiles/oop_lab3.dir/sources/SFile.cpp.o -o oop_lab3 
+/usr/bin/c++  -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Wfloat-equal CMakeFiles/oop_lab3.dir/sources/main.cpp.o CMakeFiles/oop_lab3.dir/sources/SFile.cpp.o CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.o CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.o -o oop_lab3 

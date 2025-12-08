@@ -1,7 +1,7 @@
 // author: Danila "akshin_" Axyonov
 
-#ifndef SBASE__
-#define SBASE__
+#ifndef SBASE__HPP
+#define SBASE__HPP
 
 namespace Lab3
 {

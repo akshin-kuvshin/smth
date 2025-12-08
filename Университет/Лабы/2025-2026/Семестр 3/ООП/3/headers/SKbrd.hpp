@@ -1,7 +1,7 @@
 // author: Danila "akshin_" Axyonov
 
-#ifndef SKBRD__
-#define SKBRD__
+#ifndef SKBRD__HPP
+#define SKBRD__HPP
 
 #include "SBase.hpp"
 

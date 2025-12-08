@@ -1,7 +1,7 @@
 // author: Danila "akshin_" Axyonov
 
-#ifndef SFILE__
-#define SFILE__
+#ifndef SFILE__HPP
+#define SFILE__HPP
 
 #include "SBase.hpp"
 #include <fstream>

@@ -153,6 +153,54 @@ sources/SFile.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/oop_lab3.dir/build.make CMakeFiles/oop_lab3.dir/sources/SFile.cpp.s
 .PHONY : sources/SFile.cpp.s
 
+sources/SKbrd.o: sources/SKbrd.cpp.o
+.PHONY : sources/SKbrd.o
+
+# target to build an object file
+sources/SKbrd.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oop_lab3.dir/build.make CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.o
+.PHONY : sources/SKbrd.cpp.o
+
+sources/SKbrd.i: sources/SKbrd.cpp.i
+.PHONY : sources/SKbrd.i
+
+# target to preprocess a source file
+sources/SKbrd.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oop_lab3.dir/build.make CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.i
+.PHONY : sources/SKbrd.cpp.i
+
+sources/SKbrd.s: sources/SKbrd.cpp.s
+.PHONY : sources/SKbrd.s
+
+# target to generate assembly for a file
+sources/SKbrd.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oop_lab3.dir/build.make CMakeFiles/oop_lab3.dir/sources/SKbrd.cpp.s
+.PHONY : sources/SKbrd.cpp.s
+
+sources/SQueue.o: sources/SQueue.cpp.o
+.PHONY : sources/SQueue.o
+
+# target to build an object file
+sources/SQueue.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oop_lab3.dir/build.make CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.o
+.PHONY : sources/SQueue.cpp.o
+
+sources/SQueue.i: sources/SQueue.cpp.i
+.PHONY : sources/SQueue.i
+
+# target to preprocess a source file
+sources/SQueue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oop_lab3.dir/build.make CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.i
+.PHONY : sources/SQueue.cpp.i
+
+sources/SQueue.s: sources/SQueue.cpp.s
+.PHONY : sources/SQueue.s
+
+# target to generate assembly for a file
+sources/SQueue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oop_lab3.dir/build.make CMakeFiles/oop_lab3.dir/sources/SQueue.cpp.s
+.PHONY : sources/SQueue.cpp.s
+
 sources/main.o: sources/main.cpp.o
 .PHONY : sources/main.o
 
@@ -189,6 +237,12 @@ help:
 	@echo "... sources/SFile.o"
 	@echo "... sources/SFile.i"
 	@echo "... sources/SFile.s"
+	@echo "... sources/SKbrd.o"
+	@echo "... sources/SKbrd.i"
+	@echo "... sources/SKbrd.s"
+	@echo "... sources/SQueue.o"
+	@echo "... sources/SQueue.i"
+	@echo "... sources/SQueue.s"
 	@echo "... sources/main.o"
 	@echo "... sources/main.i"
 	@echo "... sources/main.s"
